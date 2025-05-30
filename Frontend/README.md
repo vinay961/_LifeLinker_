@@ -1,12 +1,54 @@
-# React + Vite
+# Employee Management System
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is a **React-based Employee Management System** that allows administrators to manage employee information efficiently. The project currently includes login, signup, dashboard navigation, and an employee list view.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Features Implemented
 
-## Expanding the ESLint configuration
+### User Authentication
+- **Sign Up** page for user registration (Username, Email, Password).
+- **Login** page for user authentication.
+- Simple session behavior (to be enhanced with backend support).
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### Routing and Navigation
+- Navigation bar with links to:
+  - `Home`
+  - `Employee List`
+  - `Dashboard`
+  - `Logout` button
+- Routing implemented using `react-router-dom`.
+
+### Dashboard Page
+- Admin panel UI with:
+  - Admin name shown (static for now)
+  - Logout button
+  - Navigation to Create Employee and Employee List
+
+### Employee List Page
+- Displays a structured table with:
+  - Profile image
+  - Unique ID
+  - Name, Email, Mobile
+  - Designation, Gender, Course
+  - Create Date
+  - **Edit** and **Delete** buttons
+- **Total count** of employees shown at the top
+- **Search bar** placeholder for filtering
+- **Create Employee** button (form functionality coming soon)
+
+---
+
+## Tech Stack
+
+| Technology      | Purpose                  |
+|-----------------|---------------------------|
+| React.js        | Component-based UI         |
+| React Router DOM| Page navigation            |
+| JSX             | Component structure        |
+| CSS             | Custom styling             |
+
+---
+
+## Project Structure
+
