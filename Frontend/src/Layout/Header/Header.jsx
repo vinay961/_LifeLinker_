@@ -2,7 +2,7 @@ import './Header.css';
 import React from 'react';
 
 function Header() {
-  const user = "Vinay";
+  const user = JSON.parse(localStorage.getItem("user"));
 
   const handleLogout = () => {
     localStorage.removeItem("user");
@@ -13,8 +13,8 @@ function Header() {
     <div className="header-container">
       <div className="logo">
         <img
-          src="https://purepng.com/public/uploads/large/purepng.com-nike-logologobrand-logoiconslogos-251519940082eoxxs.png"
-          height="50px"
+          src="https://lifelink-oncall.com/wp-content/uploads/2021/03/Lifelink_red_rgb.png"
+          height="30px"
           width="110px"
           alt="Logo"
         />

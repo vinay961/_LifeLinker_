@@ -7,10 +7,6 @@
   border-bottom: 1px solid #ddd;
 }
 
-.logo img {
-  border-radius: 8px;
-}
-
 .left{
   display: flex;
   align-items: center;

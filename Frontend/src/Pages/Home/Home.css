@@ -1,59 +1,58 @@
 .home-container {
-  max-width: 800px;
-  margin: 60px auto;
-  padding: 40px;
-  background: #fff;
-  border-radius: 16px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 20px;
+  background-color: #ffffff;
+  border: 1px solid #ccc;
+  border-radius: 10px;
   text-align: center;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: Arial, sans-serif;
 }
 
 .home-container h1 {
-  font-size: 36px;
-  color: #333;
-  margin-bottom: 20px;
+  font-size: 28px;
+  color: #222;
+  margin-bottom: 15px;
 }
 
 .home-container p {
-  font-size: 18px;
-  color: #666;
-  margin-bottom: 30px;
-  line-height: 1.5;
+  font-size: 16px;
+  color: #555;
+  margin-bottom: 20px;
 }
 
 .home-buttons {
   display: flex;
   justify-content: center;
-  gap: 20px;
   flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 20px;
 }
 
 .btn-primary,
 .btn-secondary {
-  padding: 12px 24px;
-  font-size: 16px;
+  padding: 10px 20px;
+  font-size: 14px;
   border: none;
-  border-radius: 8px;
+  border-radius: 6px;
   cursor: pointer;
-  transition: background 0.3s ease;
   text-decoration: none;
 }
 
 .btn-primary {
-  background-color: #4a90e2;
-  color: #fff;
+  background-color: blue;
+  color: white;
 }
 
 .btn-primary:hover {
-  background-color: #357ab8;
+  background-color: darkblue;
 }
 
 .btn-secondary {
-  background-color: #f0f0f0;
-  color: #333;
+  background-color: lightgray;
+  color: black;
 }
 
 .btn-secondary:hover {
-  background-color: #ddd;
+  background-color: gray;
 }

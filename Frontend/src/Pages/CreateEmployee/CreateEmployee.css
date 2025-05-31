@@ -1,0 +1,52 @@
+.simple-form {
+  width: 400px;
+  margin: 30px auto;
+  padding: 20px;
+  border: 1px solid gray;
+  background-color: #f9f9f9;
+  font-family: Arial, sans-serif;
+}
+
+.simple-form h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.simple-form label {
+  display: block;
+  margin-top: 10px;
+}
+
+.simple-form input,
+.simple-form select {
+  width: 100%;
+  padding: 6px;
+  margin-top: 4px;
+  margin-bottom: 8px;
+  box-sizing: border-box;
+}
+
+.simple-form input[type="radio"],
+.simple-form input[type="checkbox"] {
+  width: auto;
+  margin-right: 5px;
+}
+
+.simple-form button {
+  width: 100%;
+  padding: 8px;
+  margin-top: 15px;
+  background-color: blue;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.simple-form button:hover {
+  background-color: darkblue;
+}
+
+.error {
+  color: red;
+  font-size: 12px;
+}

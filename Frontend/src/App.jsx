@@ -6,6 +6,7 @@ import Signup from './Components/SignUp/SignUp.jsx';
 import Home from './Pages/Home/Home.jsx';
 import Admin from './Pages/Admin/Admin.jsx';
 import Employees from './Pages/Employees/Employees.jsx';
+import CreateEmployee from './Pages/CreateEmployee/CreateEmployee.jsx';
 
 import {BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 
@@ -21,6 +22,7 @@ function App() {
           <Route path="/signup" element={<Signup />} />
           <Route path="/dashboard" element={<Admin />} />
           <Route path="/employees" element={<Employees />} />
+          <Route path="/create-employee" element={<CreateEmployee />} />
         </Routes>
       </Router>
     </>

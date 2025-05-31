@@ -49,14 +49,17 @@ const employees = [
 ];
 
 function Employees() {
+  const AddEmployee = () => {
+    window.location.href = '/create-employee';
+  };
   return (
     <div className="employee-list-container">
 
       <div className="highlight">Employee List</div>
 
       <div className="top-controls">
-        <span>Total Count: {employees.length}</span>
-        <button className="create-btn">Create Employee</button>
+        <span>Total Employees: {employees.length}</span>
+        <button className="create-btn" onClick={AddEmployee}>Create Employee</button>
       </div>
 
       <div className="search-box">

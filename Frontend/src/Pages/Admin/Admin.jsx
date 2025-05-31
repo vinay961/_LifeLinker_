@@ -20,10 +20,6 @@ function Admin() {
                     <h3>Recent Additions</h3>
                     <p>3 this week</p>
                 </div>
-                <div className="dashboard-card">
-                    <h3>Pending Approvals</h3>
-                    <p>2</p>
-                </div>
             </div>
         </div>
     );

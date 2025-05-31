@@ -3,7 +3,7 @@ import './Home.css';
 import { Link } from 'react-router-dom';
 
 function Home() {
-    const user = "Vinay"; 
+    const user = JSON.parse(localStorage.getItem("user")); 
 
     return (
         <div className="home-container">

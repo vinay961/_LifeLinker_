@@ -50,5 +50,3 @@ This is a **React-based Employee Management System** that allows administrators 
 
 ---
 
-## Project Structure
-
