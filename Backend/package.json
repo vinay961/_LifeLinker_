@@ -1,0 +1,28 @@
+{
+  "name": "backend_for_lifelinkr",
+  "version": "1.0.0",
+  "description": "Developing a backend for employee management",
+  "keywords": [
+    "npm",
+    "js"
+  ],
+  "license": "ISC",
+  "author": "Vinay Rai",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm run start",
+    "start": "nodemon src/index.js"
+  },
+  "dependencies": {
+    "cookie-parser": "^1.4.7",
+    "cors": "^2.8.5",
+    "dotenv": "^16.5.0",
+    "eslint": "^9.28.0",
+    "express": "^5.1.0",
+    "mongoose": "^8.15.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.10"
+  }
+}
