@@ -19,7 +19,7 @@ function SignUp() {
         };
 
         try {
-            const response = await axios.post('http://localhost:5000/api/user/createUser', userData, {
+            const response = await axios.post('https://lifelinker.onrender.com/api/user/createUser', userData, {
                 headers: { 'Content-Type': 'application/json' }
             });
 

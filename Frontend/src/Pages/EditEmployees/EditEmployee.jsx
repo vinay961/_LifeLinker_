@@ -23,7 +23,7 @@ const EditEmployee = () => {
   useEffect(() => {
     const fetchEmployee = async () => {
       try {
-        const res = await axios.get(`http://localhost:5000/api/employee/getEmployee/${id}`, {
+        const res = await axios.get(`https://lifelinker.onrender.com/api/employee/getEmployee/${id}`, {
           withCredentials: true
         });
         const emp = res.data.employee;
@@ -101,7 +101,7 @@ const EditEmployee = () => {
 
     try {
       const res = await axios.put(
-        `http://localhost:5000/api/employee/editEmployee/${id}`,
+        `https://lifelinker.onrender.com/api/employee/editEmployee/${id}`,
         data,
         {
           headers: { 'Content-Type': 'multipart/form-data' },

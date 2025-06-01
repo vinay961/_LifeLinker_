@@ -13,7 +13,7 @@ function Employees() {
 
   const fetchEmployees = async () => {
     try {
-      const response = await fetch('http://localhost:5000/api/employee/allEmployee', {
+      const response = await fetch('https://lifelinker.onrender.com/api/employee/allEmployee', {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json'
@@ -61,7 +61,7 @@ function Employees() {
   const handleDelete = (id) => {
     const response = window.confirm("Are you sure you want to delete this employee?");
     if(response) {
-      axios.delete(`http://localhost:5000/api/employee/deleteEmployee/${id}`, {
+      axios.delete(`https://lifelinker.onrender.com/api/employee/deleteEmployee/${id}`, {
         withCredentials: true
       })
       .then(res => {

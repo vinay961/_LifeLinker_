@@ -67,7 +67,7 @@ const CreateEmployee = () => {
 
     try {
       const res = await axios.post(
-        'http://localhost:5000/api/employee/createEmployee',
+        'https://lifelinker.onrender.com/api/employee/createEmployee',
         data,
         {
           headers: { 'Content-Type': 'multipart/form-data' },

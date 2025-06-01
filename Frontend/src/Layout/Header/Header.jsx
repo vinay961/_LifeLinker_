@@ -15,7 +15,7 @@ function Header() {
 
   const handleLogout = async () => {
 
-    const response = await axios.post('http://localhost:5000/api/user/logoutUser', {}, {
+    const response = await axios.post('https://lifelinker.onrender.com/api/user/logoutUser', {}, {
       withCredentials: true,
       headers: {
         'Content-Type': 'application/json',
