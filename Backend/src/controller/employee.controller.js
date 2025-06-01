@@ -62,8 +62,59 @@ const getEmployeeById = async (req, res) => {
     }
 }
 
+const editEmployee = async (req, res) => {
+    try {
+        const { id } = req.params;
+        const { name, email, mobile, designation, gender } = req.body;
+        const courses = JSON.parse(req.body.courses);
+        if([name,email,mobile,designation,gender].some(field => !field)) {
+            return res.status(400).json({message: "All fields are required"});
+        }
+        const localFilePath = req.file ? req.file.path : null;
+        let employeeImage = null;
+        if (localFilePath) {
+            employeeImage = await uploadOnCloudinary(localFilePath);
+            if (!employeeImage) {
+                return res.status(500).json({message: "Image upload failed"});
+            }
+        }
+        const updatedEmployee = await Employee.findByIdAndUpdate(id, {
+            name,
+            email,
+            mobile,
+            designation,
+            gender,
+            courses,
+            image: employeeImage ? employeeImage.url : undefined,
+        }, { new: true });
+        if (!updatedEmployee) {
+            return res.status(404).json({message: "Employee not found"});
+        }
+        res.status(200).json({message: "Employee updated successfully", employee: updatedEmployee});
+    } catch (error) {
+        console.error("Error updating employee:", error);
+        res.status(500).json({message: "Internal server error"});
+    }
+}
+
+const deleteEmployee = async (req, res) => {
+    try {
+        const { id } = req.params;
+        const deletedEmployee = await Employee.findByIdAndDelete(id);
+        if (!deletedEmployee) {
+            return res.status(404).json({message: "Employee not found"});
+        }
+        res.status(200).json({message: "Employee deleted successfully"});
+    } catch (error) {
+        console.error("Error deleting employee:", error);
+        res.status(500).json({message: "Internal server error"});
+    }
+}
+
 export {
     createEmployee,
     getAllEmployees,
-    getEmployeeById
+    getEmployeeById,
+    editEmployee,
+    deleteEmployee
 }

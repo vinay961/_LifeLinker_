@@ -10,11 +10,11 @@ function Admin() {
             <div className="dashboard-grid">
                 <div className="dashboard-card">
                     <h3>Total Employees</h3>
-                    <p>120</p>
+                    <p>3</p>
                 </div>
                 <div className="dashboard-card">
                     <h3>Departments</h3>
-                    <p>5</p>
+                    <p>3</p>
                 </div>
                 <div className="dashboard-card">
                     <h3>Recent Additions</h3>

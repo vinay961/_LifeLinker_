@@ -7,6 +7,7 @@ import Home from './Pages/Home/Home.jsx';
 import Admin from './Pages/Admin/Admin.jsx';
 import Employees from './Pages/Employees/Employees.jsx';
 import CreateEmployee from './Pages/CreateEmployee/CreateEmployee.jsx';
+import EditEmployee from './Pages/EditEmployees/EditEmployee.jsx';
 
 import {BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 
@@ -23,6 +24,7 @@ function App() {
           <Route path="/dashboard" element={<Admin />} />
           <Route path="/employees" element={<Employees />} />
           <Route path="/create-employee" element={<CreateEmployee />} />
+          <Route path="/edit-employee/:id" element={<EditEmployee />} />
         </Routes>
       </Router>
     </>

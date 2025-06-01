@@ -1,59 +1,15 @@
-import React from 'react';
 import './Employees.css';
+
+import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
 import { useState } from 'react';
 
-// const employees = [
-//   {
-//     id: 1,
-//     name: 'hukum',
-//     email: 'hcgupta@cstech.in',
-//     mobile: '954010044',
-//     designation: 'HR',
-//     gender: 'Male',
-//     course: 'MCA',
-//     date: '13-Feb-21',
-//     image: 'https://via.placeholder.com/40'
-//   },
-//   {
-//     id: 2,
-//     name: 'manish',
-//     email: 'manish@cstech.in',
-//     mobile: '954010033',
-//     designation: 'Sales',
-//     gender: 'Male',
-//     course: 'BCA',
-//     date: '12-Feb-21',
-//     image: 'https://via.placeholder.com/40'
-//   },
-//   {
-//     id: 3,
-//     name: 'yash',
-//     email: 'yash@cstech.in',
-//     mobile: '954010022',
-//     designation: 'Manager',
-//     gender: 'Male',
-//     course: 'BSC',
-//     date: '11-Feb-21',
-//     image: 'https://via.placeholder.com/40'
-//   },
-//   {
-//     id: 4,
-//     name: 'abhishek',
-//     email: 'abhishek@cstech.in',
-//     mobile: '954010033',
-//     designation: 'HR',
-//     gender: 'Male',
-//     course: 'MCA',
-//     date: '13-Feb-21',
-//     image: 'https://via.placeholder.com/40'
-//   }
-// ];
 
 function Employees() {
   const navigate = useNavigate();
   const [employeeList, setEmployeeList] = useState([]);
+  const [searchKeyword, setSearchKeyword] = useState('');
 
   const fetchEmployees = async () => {
     try {
@@ -89,6 +45,40 @@ function Employees() {
       });
   }, []);
 
+  const filteredEmployees = employeeList.filter(emp =>
+    emp.name.toLowerCase().includes(searchKeyword.toLowerCase()) ||
+    emp.email.toLowerCase().includes(searchKeyword.toLowerCase()) ||
+    emp.mobile.toString().includes(searchKeyword) ||
+    emp.courses.some(course =>
+      course.toLowerCase().includes(searchKeyword.toLowerCase())
+    )
+  );
+
+  const handleEdit = (id) => {
+    navigate(`/edit-employee/${id}`);
+  }
+
+  const handleDelete = (id) => {
+    const response = window.confirm("Are you sure you want to delete this employee?");
+    if(response) {
+      axios.delete(`http://localhost:5000/api/employee/deleteEmployee/${id}`, {
+        withCredentials: true
+      })
+      .then(res => {
+        if (res.status === 200) {
+          alert("Employee deleted successfully");
+          setEmployeeList(employeeList.filter(emp => emp._id !== id));
+        } else {
+          alert("Failed to delete employee");
+        }
+      })
+      .catch(err => {
+        console.error("Error deleting employee:", err);
+        alert("Failed to delete employee");
+      });
+    }
+  }
+
   const AddEmployee = () => {
     navigate('/create-employee');
   };
@@ -99,13 +89,13 @@ function Employees() {
       <div className="highlight">Employee List</div>
 
       <div className="top-controls">
-        <span>Total Employees: {employeeList.length}</span>
+        <span>Total Employees: {filteredEmployees.length}</span>
         <button className="create-btn" onClick={AddEmployee}>Create Employee</button>
       </div>
 
       <div className="search-box">
         <label>Enter Search Keyword</label>
-        <input type="text" placeholder="Search..." />
+        <input type="text" placeholder="Search..." onChange={(e) => setSearchKeyword(e.target.value)} />
       </div>
 
       <table className="employee-table">
@@ -124,7 +114,7 @@ function Employees() {
           </tr>
         </thead>
         <tbody>
-          {employeeList.map(emp => (
+          {filteredEmployees.map(emp => (
             <tr key={emp._id}>
               <td>{emp._id}</td>
               <td><img src={emp.image} alt="profile" className="emp-image" style={{borderRadius:"50%"}} /></td>
@@ -136,8 +126,8 @@ function Employees() {
               <td>{emp.courses.join(', ')}</td>
               <td>{new Date(emp.createdAt).toLocaleDateString()}</td>
               <td>
-                <button className="action-btn">Edit</button>
-                <button className="action-btn delete">Delete</button>
+                <button className="action-btn" onClick={() => handleEdit(emp._id)}>Edit</button>
+                <button className="action-btn delete" onClick={() => handleDelete(emp._id)}>Delete</button>
               </td>
             </tr>
           ))}
