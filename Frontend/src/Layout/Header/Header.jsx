@@ -1,12 +1,23 @@
 import './Header.css';
 import React from 'react';
+import { useEffect, useState } from 'react';
+import {useNavigate} from 'react-router-dom';
 
 function Header() {
-  const user = JSON.parse(localStorage.getItem("user"));
+  const navigate = useNavigate();
+  const [user, setUser] = useState(null);
+  useEffect(() => {
+    const user = localStorage.getItem("user");
+    if (!user) {
+      navigate("/");
+    } else {
+      setUser(JSON.parse(user));
+    }
+  }, [navigate]);
 
   const handleLogout = () => {
     localStorage.removeItem("user");
-    window.location.href = "/login";
+    navigate("/");
   };
 
   return (

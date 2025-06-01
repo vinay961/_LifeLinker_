@@ -1,4 +1,6 @@
 import mongoose,{Schema} from "mongoose";
+import bcrypt from "bcrypt";
+import jwt from "jsonwebtoken";
 
 const userSchema = new Schema({
     username: {
@@ -26,7 +28,7 @@ const userSchema = new Schema({
 },{timestamps: true});
 
 // Hashing password before saving
-employeeSchema.pre('save', async function(next) {
+userSchema.pre('save', async function(next) {
     if (this.isModified('password')) {
         this.password = await bcrypt.hash(this.password, 10);
     }

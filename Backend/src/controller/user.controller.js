@@ -1,4 +1,3 @@
-import { use } from "react";
 import { User } from "../model/user.model.js";
 
 const generateToken = async (userId) => {
@@ -31,7 +30,7 @@ const createUser = async (req, res) => {
         });
 
         await newUser.save();
-        res.status(201).json({ message: "User created successfully", user: newUser });
+        res.status(200).json({ message: "User created successfully", user: newUser });
 
     } catch (error) {
         console.error("Error creating user:", error);
@@ -57,7 +56,7 @@ const LoginUser = async (req, res) => {
             return res.status(401).json({ message: "Invalid credentials" });
         }
         const token = await generateToken(user._id);
-        const loggedInUser = await User.findById(user._id).select("-password -token");
+        const loggedInUser = await User.findById(user._id).select("-password");
         const options = {
             httpOnly:true,
             secure:true,
