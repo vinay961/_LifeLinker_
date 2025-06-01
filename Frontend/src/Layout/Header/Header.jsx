@@ -1,5 +1,5 @@
 import './Header.css';
-import React from 'react';
+import axios from 'axios';
 import { useEffect, useState } from 'react';
 import {useNavigate} from 'react-router-dom';
 
@@ -8,16 +8,25 @@ function Header() {
   const [user, setUser] = useState(null);
   useEffect(() => {
     const user = localStorage.getItem("user");
-    if (!user) {
-      navigate("/");
-    } else {
+    if (user) {
       setUser(JSON.parse(user));
     }
   }, [navigate]);
 
-  const handleLogout = () => {
-    localStorage.removeItem("user");
-    navigate("/");
+  const handleLogout = async () => {
+
+    const response = await axios.post('http://localhost:5000/api/user/logoutUser', {}, {
+      withCredentials: true,
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+    if (response.status === 200) {
+      console.log("Logout successful");
+      localStorage.removeItem("user");
+      setUser(null);
+      navigate("/login");
+    }
   };
 
   return (

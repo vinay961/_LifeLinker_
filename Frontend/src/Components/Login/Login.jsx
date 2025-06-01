@@ -38,18 +38,18 @@ function Login() {
     }
     return (
         <div className="login-container">
-        <h1>Login</h1>
-        <form>
-            <div className="form-group">
-                <label htmlFor="email">Email:</label>
-                <input type="text" id="email" name="email" onChange={(e)=>{setEmail(e.target.value)}} required />
-            </div>
-            <div className="form-group">
-                <label htmlFor="password">Password:</label>
-                <input type="password" id="password" name="password" onChange={(e)=>{setPassword(e.target.value)}} required />
-            </div>
-            <button type="submit" onClick={handleSubmit}>Login</button>
-        </form>
+            <h1>Login</h1>
+            <form>
+                <div className="form-group">
+                    <label htmlFor="email">Email:</label>
+                    <input type="text" id="email" name="email" onChange={(e)=>{setEmail(e.target.value)}} required />
+                </div>
+                <div className="form-group">
+                    <label htmlFor="password">Password:</label>
+                    <input type="password" id="password" name="password" onChange={(e)=>{setPassword(e.target.value)}} required />
+                </div>
+                <button type="submit" onClick={handleSubmit}>Login</button>
+            </form>
         </div>
     );
 }

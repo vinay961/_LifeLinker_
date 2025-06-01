@@ -1,12 +1,23 @@
 import { Employee } from "../model/employee.model.js";
+import { uploadOnCloudinary } from "../utils/cloudinary.js";
 
 const createEmployee = async (req,res) => {
     try {
-        const {name,email,mobile,designation,gender,course} = req.body;
+        const { name, email, mobile, designation, gender } = req.body;
+        const courses = JSON.parse(req.body.courses);
 
-        const image = req.file ? req.file.path : null;
-        if([name,email,mobile,designation,gender,course,image].some(field => !field)) {
+
+        if([name,email,mobile,designation,gender].some(field => !field)) {
             return res.status(400).json({message: "All fields are required"});
+        }
+        const localFilePath = req.file ? req.file.path : null;
+        console.log("Local file path:", localFilePath); // Debugging line to check the file path
+        if (!localFilePath) {
+            return res.status(400).json({message: "Image is required"});
+        }
+        const employeeImage = await uploadOnCloudinary(localFilePath);
+        if (!employeeImage) {
+            return res.status(500).json({message: "Image upload failed"});
         }
 
         const newEmployee = new Employee({
@@ -15,8 +26,8 @@ const createEmployee = async (req,res) => {
             mobile,
             designation,
             gender,
-            course,
-            image: image ? image : null
+            courses,
+            image: employeeImage.url,
         });
         await newEmployee.save();
         res.status(201).json({message: "Employee created successfully", employee: newEmployee});

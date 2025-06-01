@@ -22,16 +22,15 @@ const employeeSchema = new Schema({
     designation: {
         type: String,
         required: true,
-        enum: ['Manager', 'Developer', 'Designer', 'Tester']
+        enum: ['Manager', 'Developer', 'Designer', 'Tester', 'HR', 'Sales']
     },
     gender: {
         type: String,
         required: true,
     },
-    course: {
+    courses: {
         type: [String],
         required: true,
-        enum: ['JavaScript', 'Python', 'Java', 'C++']
     },
     image: {
         type: String,

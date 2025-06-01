@@ -59,8 +59,8 @@ const LoginUser = async (req, res) => {
         const loggedInUser = await User.findById(user._id).select("-password");
         const options = {
             httpOnly:true,
-            secure:true,
-            sameSite:'None'
+            secure:false,
+            sameSite:'Lax'
         }
 
         res
@@ -74,8 +74,29 @@ const LoginUser = async (req, res) => {
     }
 }
 
+const LogoutUser = async (req, res) => {
+    try {
+        const user = req.user;
+        if (!user) {
+            return res.status(401).json({ message: "Unauthorized" });
+        }
+
+        user.token = null;
+        await user.save({ validateBeforeSave: false });
+
+        res
+            .status(200)
+            .cookie("token", null, { httpOnly: true, secure: false, sameSite: 'Lax' })
+            .json({ message: "Logout successful" });
+
+    } catch (error) {
+        console.error("Error logging out user:", error);
+        res.status(500).json({ message: "Internal server error" });
+    }
+}
 
 export {
     createUser,
-    LoginUser
+    LoginUser,
+    LogoutUser,
 }
