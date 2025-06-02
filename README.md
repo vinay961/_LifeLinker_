@@ -1,10 +1,10 @@
-# 🌐 Lifelinker Web Application
+# Lifelinker Web Application
 
 Lifelinker is a full-stack web application designed to manage employee-related tasks with secure user login, session handling, and personalized navigation. This project demonstrates clean UI components, state management, API integration, and planned scalability.
 
 ---
 
-## ✨ Features
+## Features
 
 - ✅ **User Authentication** (Login/Logout)
 - ✅ **Session Management** with auto-expiry after 1 hour
@@ -15,7 +15,7 @@ Lifelinker is a full-stack web application designed to manage employee-related t
 
 ---
 
-## 📁 Tech Stack
+## Tech Stack
 
 - **Frontend**: React.js, React Router, Axios, CSS
 - **Backend**: Node.js, Express.js (API hosted on Render)
@@ -24,7 +24,7 @@ Lifelinker is a full-stack web application designed to manage employee-related t
 
 ---
 
-## 📅 Future Plans
+## Future Plans
 
 I plan to actively maintain and improve the project with the following features:
 
@@ -38,11 +38,3 @@ I plan to actively maintain and improve the project with the following features:
 - 📦 Integration with a real-time database (MongoDB or Firebase)
 
 ---
-
-## 🚀 Getting Started
-
-### 1. Clone the repository
-
-```bash
-git clone https://github.com/vinay961/_lifelinker_.git
-cd lifelinker
