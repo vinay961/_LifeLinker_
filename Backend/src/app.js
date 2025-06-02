@@ -4,7 +4,7 @@ import cookieParser from 'cookie-parser';
 
 const app = express();
 
-app.use(cors({origin: 'https://lifelinker.onrender.com', credentials: true}));
+app.use(cors({origin: 'https://lifelinker-qzkv.onrender.com', credentials: true}));
 app.use(express.json());
 app.use(cookieParser());
 app.use(express.urlencoded({ extended: true }));
