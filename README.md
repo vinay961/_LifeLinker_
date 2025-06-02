@@ -44,5 +44,5 @@ I plan to actively maintain and improve the project with the following features:
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/your-username/lifelinker.git
+git clone https://github.com/vinay961/_lifelinker_.git
 cd lifelinker
