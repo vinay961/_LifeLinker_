@@ -13,22 +13,19 @@ function Employees() {
 
   const fetchEmployees = async () => {
     try {
-      const response = await fetch('https://lifelinker.onrender.com/api/employee/allEmployee', {
-        method: 'GET',
+      const response = await axios.get('https://lifelinker.onrender.com/api/employee/allEmployee', {
+        withCredentials: true,
         headers: {
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
         },
-        credentials: 'include' 
       });
-      console.log("Response status:", response.status); // Debugging line to check the response status
-      if (!response.ok) {
-        throw new Error('Network response was not ok');
-      }
+
+      console.log("Response status:", response.status);
       return response;
     } catch (error) {
-      console.log(error);
+      console.error("Error fetching employees:", error);
     }
-  }
+  };
 
   useEffect(() => {
     fetchEmployees()
