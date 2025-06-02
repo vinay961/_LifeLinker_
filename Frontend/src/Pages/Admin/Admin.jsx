@@ -1,7 +1,19 @@
-import React from 'react';
 import './Admin.css';
+import { useNavigate } from 'react-router-dom';
+import { useEffect } from 'react';
 
 function Admin() {
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        const user = localStorage.getItem('user');
+        if (!user) {
+            alert("You are not authenticated. Please log in.");
+            navigate('/login');
+            return null; 
+        } 
+    }, [navigate]);
+
     return (
         <div className="admin-dashboard">
             <h1>Admin Dashboard</h1>

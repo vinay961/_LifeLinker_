@@ -13,6 +13,14 @@ function Employees() {
 
   const fetchEmployees = async () => {
     try {
+      // check that user is authenticated
+      const user = localStorage.getItem('user');
+      if (!user) {
+        alert("You are not authenticated. Please log in.");
+        navigate('/login');
+        return;
+      }
+      // fetch employees from the API
       const response = await axios.get('https://lifelinker.onrender.com/api/employee/allEmployee', {
         withCredentials: true,
         headers: {
