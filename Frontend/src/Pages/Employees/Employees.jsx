@@ -29,10 +29,9 @@ function Employees() {
 
   useEffect(() => {
     fetchEmployees()
-      .then(response => response.json())
-      .then(data => {
-        if (data && data.employees) {
-          setEmployeeList(data.employees);
+      .then(response => {
+        if (response && response.data && response.data.employees) {
+          setEmployeeList(response.data.employees);
         } else {
           console.error("No employees found in the response");
         }
